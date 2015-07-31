@@ -63,7 +63,7 @@ public class Card {
             number = indexInDeck % set_size;
             symbol = indexInDeck / set_size;
             card = new Card(allRanks[number], allSuits[symbol]);
-            System.out.println("rank : " + allRanks[number] + "suit : " + allSuits[symbol]);
+            System.out.println("rank = " + allRanks[number] + "suit : " + allSuits[symbol]);
         }
  
         
