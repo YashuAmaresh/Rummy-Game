@@ -1,11 +1,10 @@
-
 package card;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Card {
+public class Card implements Comparable<Card> {
     int rank;
     String suit;
     final static int deck_size = 53;
@@ -47,26 +46,11 @@ public class Card {
         }
         return true;
     }
-    
-    public static void intToCard(int num ) {
-        Card card;
-        int number;
-        int symbol;
-        int indexInDeck = num % deck_size;
-        if (indexInDeck == 0) {
-            card = new Card(14, "");
-            System.out.println("rank : 14, suit : No");
-        }
-        
- 
-        else {
-            number = indexInDeck % set_size;
-            symbol = indexInDeck / set_size;
-            card = new Card(allRanks[number], allSuits[symbol]);
-            System.out.println("rank = " + allRanks[number] + "suit : " + allSuits[symbol]);
-        }
- 
-        
-      //  return card;
+
+    @Override
+    public int compareTo(Card o) {
+        return 1;
     }
+    
+   
 }
