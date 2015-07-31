@@ -1,5 +1,6 @@
 package card;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +18,9 @@ public class Card implements Comparable<Card> {
         this.rank = rank;
         this.suit = suit;
     }
-    
+    public boolean isJoker() {
+        return this.rank == 14 && "".equals(this.suit);
+    }
     public boolean areInSequence(List<Card> cards) {
         for(int i=1;i<cards.size();i++)
         {
@@ -49,8 +52,18 @@ public class Card implements Comparable<Card> {
 
     @Override
     public int compareTo(Card o) {
+        // rank sort
         return 1;
     }
+
+    static class CardComparator {
+
+        public int compare(Card c1, Card c2)
+        {
+            // suit sort
+            return 1;
+        }
+    }
     
-   
 }
+

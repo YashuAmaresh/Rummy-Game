@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 
-public class Dealer {
+class Dealer {
 
-	ArrayList<Integer> deck = new ArrayList<>();
-	final static int deck_size = 52;
+    ArrayList<Integer> deck = new ArrayList<>();
+    final static int deck_size = 52;
     final static int set_size = 13;
     
     static String allSuits[] = {"S", "D", "C", "H"};
@@ -16,13 +16,13 @@ public class Dealer {
     
     int currentIndex = 0;
     
-	public Dealer() {
-		for (int i = 0; i < 159; ++i) {
-			deck.add(i+1);
-		}
-		Collections.shuffle(deck);
-	}
-	public Card getCard()
+    public Dealer() {
+        for (int i = 0; i < 159; ++i) {
+            deck.add(i+1);
+        }
+        Collections.shuffle(deck);
+    }
+    public Card getCard()
     {
         Card card;
         int number;
@@ -35,7 +35,6 @@ public class Dealer {
             System.out.println("rank : " + card.rank + ", suit : No");
         }
         
- 
         else {
             number = indexInDeck % set_size;
             symbol = indexInDeck / set_size;
