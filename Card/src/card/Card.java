@@ -30,7 +30,7 @@ public class Card {
         }
         return true;
     }
-    public boolean haveSameRank(List<Card> cards) {
+    public boolean isTriplet(List<Card> cards) {
        for(int i=1;i<cards.size();i++)
         {
             if(cards.get(i).rank==cards.get(i-1).rank)
