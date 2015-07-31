@@ -49,6 +49,19 @@ public class Card implements Comparable<Card> {
         }
         return true;
     }
+    public boolean isKanastha(List<Card> cards) {
+       for(int i=1;i<cards.size();i++)
+        {
+            if(cards.get(i).rank==cards.get(i-1).rank)
+            {
+                if(!cards.get(i).suit.equals(cards.get(i-1).suit))
+                    return false;
+            }
+            else
+                return false;
+        }
+        return true;
+    }
 
     @Override
     public int compareTo(Card o) {
