@@ -62,7 +62,8 @@ class Hand {
     }
 
     public int getMinCardsForSet() {
-
+        int numTriplets = 0;
+        int numSeq = 0;
         List<Card> cardsToFindSameRanks = cardsInHand;
         Collections.sort(cardsToFindSameRanks, new RankSortCompare());
         Collections.sort(cardsToFindSameRanks, new sameRankSuitSortCompare());
@@ -79,6 +80,7 @@ class Hand {
                 System.out.print(c.rank + " : " + c.suit + "\t");
             }
             else {
+                numTriplets += 1;
                 System.out.println();
             }
         }
@@ -98,9 +100,20 @@ class Hand {
                 System.out.print(c.rank + " : " + c.suit + "\t");
             }
             else {
+                numSeq += 1;
                 System.out.println();
             }
         }
+        List<Card> toRemove;
+        if ( numSeq > numTriplets ) {
+            toRemove = seq;
+        }
+        else {
+            toRemove = triplets;
+        }
+        cardsInHand.removeAll(toRemove);
+        
+        printHand(cardsInHand);
         return 1;
     }
 
