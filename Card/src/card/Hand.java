@@ -65,17 +65,42 @@ class Hand {
 
         List<Card> cardsToFindSameRanks = cardsInHand;
         Collections.sort(cardsToFindSameRanks, new RankSortCompare());
-        printHand(cardsToFindSameRanks);
         Collections.sort(cardsToFindSameRanks, new sameRankSuitSortCompare());
-        printHand(cardsToFindSameRanks);
-       
+        List<Card> triplets = new ArrayList<>();
+        List<Card> seq = new ArrayList<>();
+        for( int i = 0; i < cardsToFindSameRanks.size() - 2; i++) { 
+            if ( cardsToFindSameRanks.get(i).isTriplet(cardsToFindSameRanks.subList(i, i+3)) ) {
+                triplets.addAll(cardsToFindSameRanks.subList(i, i + 3));
+                triplets.add(new Card(15, " "));
+            }
+        }
+        for ( Card c : triplets) {
+            if ( c.rank != 15 ) {
+                System.out.print(c.rank + " : " + c.suit + "\t");
+            }
+            else {
+                System.out.println();
+            }
+        }
+        
         
         List<Card> cardsToFindSequence = cardsInHand;
-        Collections.sort(cardsInHand, new SuitSortCompare());
-        printHand(cardsToFindSequence);
-        Collections.sort(cardsInHand, new sameSuitRankSortCompare());
-        printHand(cardsToFindSequence);
-        
+        Collections.sort(cardsToFindSequence, new SuitSortCompare());
+        Collections.sort(cardsToFindSequence, new sameSuitRankSortCompare());
+        for( int i = 0; i < cardsToFindSequence.size() - 2; i++) { 
+            if ( cardsToFindSequence.get(i).areInSequence(cardsToFindSequence.subList(i, i+3)) ) {
+                seq.addAll(cardsToFindSequence.subList(i, i + 3));
+                seq.add(new Card(15, " "));
+            }
+        }
+        for ( Card c : seq) {
+            if ( c.rank != 15 ) {
+                System.out.print(c.rank + " : " + c.suit + "\t");
+            }
+            else {
+                System.out.println();
+            }
+        }
         return 1;
     }
 
